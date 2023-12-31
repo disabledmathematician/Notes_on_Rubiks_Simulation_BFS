@@ -82,12 +82,15 @@ def CharlesTruscott():
 	print("Then three more times for its original state")
 	HL_2_3(RubiksCube)
 	print_state(RubiksCube)
-	print("Turn the left furthest side upward twice and the left closest side upward twice")
+	print("Turn the left closest side upward twice and the left furthest side upward twice")
 	HL_2_2(RubiksCube)
 	HL_1_2(RubiksCube)
 	print_state(RubiksCube)
-	print("Then turn the left furthest side once")
+	print("Then turn the left closest side once")
 	HL_2_1(RubiksCube)
+	print_state(RubiksCube)
+	print("Then turn the left furthest side once")
+	HL_1_1(RubiksCube)
 	print_state(RubiksCube)
 	
 CharlesTruscott()
@@ -116,7 +119,7 @@ Front Face: [['G', 'G'], ['G', 'G']]
  Upper Face: [['W', 'W'], ['W', 'W']]
  Down Face: [['Y', 'Y'], ['Y', 'Y']]
 
-Turn the left furthest side upward twice and the left closest side upward twice
+Turn the left closest side upward twice and the left furthest side upward twice
 Front Face: [['G', 'G'], ['G', 'G']]
  Right Face: [['O', 'O'], ['O', 'O']]
  Left Face: [['R', 'R'], ['R', 'R']]
@@ -124,13 +127,21 @@ Front Face: [['G', 'G'], ['G', 'G']]
  Upper Face: [['Y', 'Y'], ['Y', 'Y']]
  Down Face: [['W', 'W'], ['W', 'W']]
 
-Then turn the left furthest side once
+Then turn the left closest side once
 Front Face: [['G', 'G'], ['G', 'G']]
  Right Face: [['Y', 'O'], ['Y', 'O']]
  Left Face: [['R', 'W'], ['R', 'W']]
  Back Face: [['B', 'B'], ['B', 'B']]
  Upper Face: [['Y', 'Y'], ['R', 'R']]
  Down Face: [['W', 'W'], ['O', 'O']]
+
+Then turn the left furthest side once
+Front Face: [['G', 'G'], ['G', 'G']]
+ Right Face: [['Y', 'Y'], ['Y', 'Y']]
+ Left Face: [['W', 'W'], ['W', 'W']]
+ Back Face: [['B', 'B'], ['B', 'B']]
+ Upper Face: [['R', 'R'], ['R', 'R']]
+ Down Face: [['O', 'O'], ['O', 'O']]
 
 
 [Program finished]
