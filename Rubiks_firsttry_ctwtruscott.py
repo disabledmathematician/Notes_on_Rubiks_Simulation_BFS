@@ -1,4 +1,3 @@
-""" There is symmetry for the problem and synonymous moves, and moves that lead to an infinite graph, such as four rotations then four rotations of the same move, of the 6 times 3 turn moves. Matrix representation and coordinates of reference, directional inference. Data representation is unique. Rotation moves not completely done. Just a start done in time of the first 30 minutes after NYE 2023 Jan 1st 2024. Matrix system eventually working in all rotations of the Rubiks (3 * 6) * (3 * 5) subsequent moves """
 
 # Charles Thomas Wallace Truscott 
 
@@ -43,9 +42,13 @@ def HL_1_1(Rubiks: list) -> list:
 	Rubiks[2][1][0], Rubiks[2][1][1] = SavedStateBF1[0], SavedStateBF1[1]
 	return Rubiks
 def HL_1_2(Rubiks: list):
-	pass
+	for x in range(2):
+		HL_1_1(Rubiks)
+	return Rubiks
 def HL_1_3(Rubiks: list):
-	pass
+	for x in range(3):
+		HL_1_1(Rubiks)
+	return Rubiks
 def HL_2_1(Rubiks: list) -> list:
 	SingleStateUF = (Rubiks[4][1][0], Rubiks[4][1][1])
 	SingleStateLF = (Rubiks[3][0][1], Rubiks[3][1][1])
@@ -57,9 +60,13 @@ def HL_2_1(Rubiks: list) -> list:
 	Rubiks[1][1][0] = SingleStateUF[1]
 	return Rubiks
 def HL_2_2(Rubiks: list):
-	pass
+	for x in range(2):
+		HL_2_1(Rubiks)
+	return Rubiks
 def HL_2_3(Rubiks: list):
-	pass
+	for x in range(3):
+		HL_2_1(Rubiks)
+	return Rubiks
 def CharlesTruscott():
 	FF = [["G", "G"], ["G", "G"]]
 	BF = [["B", "B"], ["B", "B"]]
@@ -69,11 +76,19 @@ def CharlesTruscott():
 	DF = [["Y", "Y"], ["Y", "Y"]]
 	RubiksCube = [FF, RF, BF, LF, UF, DF]
 	print_state(RubiksCube)
-	print("One solved move")
-	originalRubiks = RubiksCube.copy()
-	print_state(HL_2_1(RubiksCube))
-	print("Two solved moves")
-	print_state(HL_1_1(originalRubiks))
+	print("Rotate left closest facing side upward once")
+	HL_2_1(RubiksCube)
+	print_state(RubiksCube)
+	print("Then three more times for its original state")
+	HL_2_3(RubiksCube)
+	print_state(RubiksCube)
+	print("Turn the left furthest side upward twice and the left closest side upward twice")
+	HL_2_2(RubiksCube)
+	HL_1_2(RubiksCube)
+	print_state(RubiksCube)
+	print("Then turn the left furthest side once")
+	HL_2_1(RubiksCube)
+	print_state(RubiksCube)
 	
 CharlesTruscott()
 
@@ -85,7 +100,7 @@ CharlesTruscott()
  Upper Face: [['W', 'W'], ['W', 'W']]
  Down Face: [['Y', 'Y'], ['Y', 'Y']]
 
-One solved move
+Rotate left closest facing side upward once
 Front Face: [['G', 'G'], ['G', 'G']]
  Right Face: [['W', 'R'], ['W', 'R']]
  Left Face: [['O', 'Y'], ['O', 'Y']]
@@ -93,17 +108,32 @@ Front Face: [['G', 'G'], ['G', 'G']]
  Upper Face: [['W', 'W'], ['O', 'O']]
  Down Face: [['Y', 'Y'], ['R', 'R']]
 
-Two solved moves
+Then three more times for its original state
 Front Face: [['G', 'G'], ['G', 'G']]
- Right Face: [['W', 'W'], ['W', 'W']]
- Left Face: [['Y', 'Y'], ['Y', 'Y']]
+ Right Face: [['R', 'R'], ['R', 'R']]
+ Left Face: [['O', 'O'], ['O', 'O']]
  Back Face: [['B', 'B'], ['B', 'B']]
- Upper Face: [['O', 'O'], ['O', 'O']]
- Down Face: [['R', 'R'], ['R', 'R']]
+ Upper Face: [['W', 'W'], ['W', 'W']]
+ Down Face: [['Y', 'Y'], ['Y', 'Y']]
+
+Turn the left furthest side upward twice and the left closest side upward twice
+Front Face: [['G', 'G'], ['G', 'G']]
+ Right Face: [['O', 'O'], ['O', 'O']]
+ Left Face: [['R', 'R'], ['R', 'R']]
+ Back Face: [['B', 'B'], ['B', 'B']]
+ Upper Face: [['Y', 'Y'], ['Y', 'Y']]
+ Down Face: [['W', 'W'], ['W', 'W']]
+
+Then turn the left furthest side once
+Front Face: [['G', 'G'], ['G', 'G']]
+ Right Face: [['Y', 'O'], ['Y', 'O']]
+ Left Face: [['R', 'W'], ['R', 'W']]
+ Back Face: [['B', 'B'], ['B', 'B']]
+ Upper Face: [['Y', 'Y'], ['R', 'R']]
+ Down Face: [['W', 'W'], ['O', 'O']]
 
 
 [Program finished]
-
 """
 
 # Thank you Eric Grimson, John Guttag, Ana Bell and MITx and MIT OCW
