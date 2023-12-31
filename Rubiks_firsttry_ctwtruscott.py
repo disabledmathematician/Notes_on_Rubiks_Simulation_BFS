@@ -59,7 +59,7 @@ def CharlesTruscott():
 	RubiksCube = [FF, RF, BF, LF, UF, DF]
 	print_state(RubiksCube)
 	print("One solved move")
-	print_state(LeftSideTurnedClosestFacing(RubiksCube))
+	print_state(HL_2_1(RubiksCube))
 	
 CharlesTruscott()
 
