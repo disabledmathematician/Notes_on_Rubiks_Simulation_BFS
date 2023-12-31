@@ -6,8 +6,9 @@ def print_state(Rubiks):
 	print("Front Face: {}\n Right Face: {}\n Left Face: {}\n Back Face: {}\n Upper Face: {}\n Down Face: {}\n".format(Rubiks[0], Rubiks[1], Rubiks[3], Rubiks[2], Rubiks[4], Rubiks[5]))
 def LeftSideTurnedClosestFacing(Rubiks: list) -> list:
 	SingleStateUF = (Rubiks[4][1][0], Rubiks[4][1][1])
+	SingleStateLF = (Rubiks[3][0][1], Rubiks[3][1][1])
 	Rubiks[3][0][1] = Rubiks[5][1][0]; Rubiks[3][1][1] = Rubiks[5][1][1]
-	Rubiks[4][1][0] = Rubiks[3][1][1]; Rubiks[4][1][1] = Rubiks[3][0][1]
+	Rubiks[4][1][0] = SingleStateLF[0]; Rubiks[4][1][1] = SingleStateLF[1]
 	Rubiks[0][0][0], Rubiks[0][0][1],Rubiks[0][1][0], Rubiks[0][1][1] = Rubiks[0][1][0], Rubiks[0][0][0], Rubiks[0][1][1], Rubiks[0][0][1]
 	Rubiks[5][1][0], Rubiks[5][1][1] = Rubiks[1][0][0], Rubiks[1][1][0]
 	Rubiks[1][0][0] = SingleStateUF[0]
@@ -27,8 +28,9 @@ def CharlesTruscott():
 	print_state(LeftSideTurnedClosestFacing(RubiksCube))
 	
 CharlesTruscott()
-"""
-Front Face: [['G', 'G'], ['G', 'G']]
+
+
+""" Front Face: [['G', 'G'], ['G', 'G']]
  Right Face: [['R', 'R'], ['R', 'R']]
  Left Face: [['O', 'O'], ['O', 'O']]
  Back Face: [['B', 'B'], ['B', 'B']]
@@ -40,7 +42,7 @@ Front Face: [['G', 'G'], ['G', 'G']]
  Right Face: [['W', 'R'], ['W', 'R']]
  Left Face: [['O', 'Y'], ['O', 'Y']]
  Back Face: [['B', 'B'], ['B', 'B']]
- Upper Face: [['W', 'W'], ['Y', 'Y']]
+ Upper Face: [['W', 'W'], ['O', 'O']]
  Down Face: [['Y', 'Y'], ['R', 'R']]
 
 
@@ -48,4 +50,4 @@ Front Face: [['G', 'G'], ['G', 'G']]
 
 """
 
-# Thank you Eric Grimson, Ana Bell, John Guttag and MIT OCW
+# Thank you Eric Grimson, John Guttag, Ana Bell and MITx and MIT OCW
