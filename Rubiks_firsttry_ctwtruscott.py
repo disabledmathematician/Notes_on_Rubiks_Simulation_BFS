@@ -1,4 +1,4 @@
-""" Rotation moves not completely done. Just a start done in time of the first 30 minutes after NYE 2023 Jan 1st 2024. Matrix system eventually working in all rotations of the Rubiks 6 * (3 * 5) subsequent moves """
+""" Rotation moves not completely done. Just a start done in time of the first 30 minutes after NYE 2023 Jan 1st 2024. Matrix system eventually working in all rotations of the Rubiks (3 * 6) * (3 * 5) subsequent moves """
 
 # Charles Thomas Wallace Truscott 
 
