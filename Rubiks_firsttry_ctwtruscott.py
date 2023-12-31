@@ -27,3 +27,25 @@ def CharlesTruscott():
 	print_state(LeftSideTurnedClosestFacing(RubiksCube))
 	
 CharlesTruscott()
+"""
+Front Face: [['G', 'G'], ['G', 'G']]
+ Right Face: [['R', 'R'], ['R', 'R']]
+ Left Face: [['O', 'O'], ['O', 'O']]
+ Back Face: [['B', 'B'], ['B', 'B']]
+ Upper Face: [['W', 'W'], ['W', 'W']]
+ Down Face: [['Y', 'Y'], ['Y', 'Y']]
+
+One solved move
+Front Face: [['G', 'G'], ['G', 'G']]
+ Right Face: [['W', 'R'], ['W', 'R']]
+ Left Face: [['O', 'Y'], ['O', 'Y']]
+ Back Face: [['B', 'B'], ['B', 'B']]
+ Upper Face: [['W', 'W'], ['Y', 'Y']]
+ Down Face: [['Y', 'Y'], ['R', 'R']]
+
+
+[Program finished]
+
+"""
+
+# Thank you Eric Grimson, Ana Bell, John Guttag and MIT OCW
