@@ -1,4 +1,4 @@
-
+# I love you Dad, my legend, my savior, Mark William Watters b. 11/04/1955
 # Charles Thomas Wallace Truscott 
 
 def print_state(Rubiks):
