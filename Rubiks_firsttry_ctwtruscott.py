@@ -5,15 +5,15 @@ def print_state(Rubiks):
 	print("Front Face: {}\n Right Face: {}\n Left Face: {}\n Back Face: {}\n Upper Face: {}\n Down Face: {}\n".format(Rubiks[0], Rubiks[1], Rubiks[3], Rubiks[2], Rubiks[4], Rubiks[5]))
 
 def FRU_1_1(Rubiks: list):
-	SaveStateDF = Rubiks[4][0][0], Rubiks[4][1][0]
+	SaveStateUF = Rubiks[4][0][0], Rubiks[4][1][0]
 	SaveStateLF = Rubiks[3][0][0], Rubiks[3][1][0]
-	SaveStateUF = Rubiks[5][0][0], Rubiks[5][1][0]
+	SaveStateDF = Rubiks[5][0][0], Rubiks[5][1][0]
 	SaveStateBF = Rubiks[2][0][1], Rubiks[2][1][1]
 	SaveStateFF = Rubiks[0][0][0], Rubiks[0][1][0]
-	Rubiks[0][0][0], Rubiks[0][1][0] = SaveStateDF[1], SaveStateDF[0]
-	Rubiks[2][0][1], Rubiks[2][1][1] = SaveStateUF[1], SaveStateUF[0]
+	Rubiks[0][0][0], Rubiks[0][1][0] = SaveStateUF[1], SaveStateUF[0]
+	Rubiks[2][0][1], Rubiks[2][1][1] = SaveStateDF[1], SaveStateDF[0]
 	Rubiks[5][0][0], Rubiks[5][1][0] = SaveStateFF[0], SaveStateFF[1]
-	Rubiks[4][0][0], Rubiks[4][1][0] = SaveStateBF[0], SaveStateBF[1]
+	Rubiks[4][0][0], Rubiks[4][1][0] = SaveStateBF[1], SaveStateBF[0]
 	SaveStateLF1 = Rubiks[3][0][1], Rubiks[3][1][1]
 	SaveStateLF2 = Rubiks[3][0][0], Rubiks[3][1][0]
 	Rubiks[3][0][0] = SaveStateLF2[1]
@@ -22,15 +22,34 @@ def FRU_1_1(Rubiks: list):
 	Rubiks[3][1][1] = SaveStateLF1[0]
 	return Rubiks
 def FRU_1_2(Rubiks: list):
-	pass
+	for x in range(2):
+		FRU_1_1(Rubiks)
 def FRU_1_3(Rubiks: list):
-	pass
+	for x in range(3):
+		FRU_1_1(Rubiks)
 def FRU_2_1(Rubiks: list):
-	pass
+	SaveStateUF = Rubiks[4][0][1], Rubiks[4][1][1]
+	SaveStateRF = Rubiks[1][0][0], Rubiks[1][1][0]
+	SaveStateDF = Rubiks[5][0][1], Rubiks[5][1][1]
+	SaveStateBF = Rubiks[2][0][0], Rubiks[2][1][0]
+	SaveStateFF = Rubiks[0][0][1], Rubiks[0][1][1]
+	Rubiks[0][0][1], Rubiks[0][1][1] = SaveStateUF[0], SaveStateUF[1]
+	Rubiks[2][0][0], Rubiks[2][1][0] = SaveStateDF[0], SaveStateDF[1]
+	Rubiks[5][0][1], Rubiks[5][1][1] = SaveStateFF[0], SaveStateFF[1]
+	Rubiks[4][0][1], Rubiks[4][1][1] = SaveStateBF[1], SaveStateBF[0]
+	SaveStateRF1 = Rubiks[1][0][0], Rubiks[1][0][1]
+	SaveStateRF2 = Rubiks[1][1][0], Rubiks[1][1][1]
+	Rubiks[1][0][0] = SaveStateRF1[1]
+	Rubiks[1][0][1] = SaveStateRF2[1]
+	Rubiks[1][1][0] = SaveStateRF1[0]
+	Rubiks[1][1][1] = SaveStateRF2[0]
+	return Rubiks
 def FRU_2_2(Rubiks: list):
-	pass
+	for x in range(2):
+		FRU_2_1(Rubiks)
 def FRU_2_3(Rubiks: list):
-	pass
+	for x in range(3):
+		FRU_2_1(Rubiks)
 def WL_1_1(Rubiks: list):
 	pass
 def WL_1_2(Rubiks: list):
@@ -109,7 +128,7 @@ def CharlesTruscott():
 #	print_state(RubiksCube)
 	answer = ""
 	while answer != str("quit"):
-		print("Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube")
+		print("Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1")
 		answer = str(input())
 		if answer == str("LFFU1"):
 			HL_1_1(RubiksCube)
@@ -125,6 +144,12 @@ def CharlesTruscott():
 			HL_2_3(RubiksCube)
 		elif answer == str("FRLU1"):
 			FRU_1_1(RubiksCube)
+		elif answer == str("FRLU2"):
+			FRU_1_2(RubiksCube)
+		elif answer == str("FRLU3"):
+			FRU_1_3(RubiksCube)
+		elif answer == str("FRRU1"):
+			FRU_2_1(RubiksCube)
 		print_state(RubiksCube)
 CharlesTruscott()
 
@@ -136,7 +161,70 @@ CharlesTruscott()
  Upper Face: [['W', 'W'], ['W', 'W']]
  Down Face: [['Y', 'Y'], ['Y', 'Y']]
 
-Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
+FRRU 1
+Front Face: [['G', 'G'], ['G', 'G']]
+ Right Face: [['R', 'R'], ['R', 'R']]
+ Left Face: [['O', 'O'], ['O', 'O']]
+ Back Face: [['B', 'B'], ['B', 'B']]
+ Upper Face: [['W', 'W'], ['W', 'W']]
+ Down Face: [['Y', 'Y'], ['Y', 'Y']]
+
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
+FRRU1
+Front Face: [['G', 'W'], ['G', 'W']]
+ Right Face: [['R', 'R'], ['R', 'R']]
+ Left Face: [['O', 'O'], ['O', 'O']]
+ Back Face: [['Y', 'B'], ['Y', 'B']]
+ Upper Face: [['W', 'B'], ['W', 'B']]
+ Down Face: [['Y', 'G'], ['Y', 'G']]
+
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
+Frlu1
+Front Face: [['G', 'W'], ['G', 'W']]
+ Right Face: [['R', 'R'], ['R', 'R']]
+ Left Face: [['O', 'O'], ['O', 'O']]
+ Back Face: [['Y', 'B'], ['Y', 'B']]
+ Upper Face: [['W', 'B'], ['W', 'B']]
+ Down Face: [['Y', 'G'], ['Y', 'G']]
+
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
+FRLU1
+Front Face: [['W', 'W'], ['W', 'W']]
+ Right Face: [['R', 'R'], ['R', 'R']]
+ Left Face: [['O', 'O'], ['O', 'O']]
+ Back Face: [['Y', 'Y'], ['Y', 'Y']]
+ Upper Face: [['B', 'B'], ['B', 'B']]
+ Down Face: [['G', 'G'], ['G', 'G']]
+
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
+LFCU1
+Front Face: [['W', 'W'], ['W', 'W']]
+ Right Face: [['B', 'R'], ['B', 'R']]
+ Left Face: [['O', 'G'], ['O', 'G']]
+ Back Face: [['Y', 'Y'], ['Y', 'Y']]
+ Upper Face: [['B', 'B'], ['O', 'O']]
+ Down Face: [['G', 'G'], ['R', 'R']]
+
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
+FRRU1
+Front Face: [['W', 'B'], ['W', 'O']]
+ Right Face: [['R', 'R'], ['B', 'B']]
+ Left Face: [['O', 'G'], ['O', 'G']]
+ Back Face: [['G', 'Y'], ['R', 'Y']]
+ Upper Face: [['B', 'Y'], ['O', 'Y']]
+ Down Face: [['G', 'W'], ['R', 'W']]
+
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
+
+Front Face: [['G', 'G'], ['G', 'G']]
+ Right Face: [['R', 'R'], ['R', 'R']]
+ Left Face: [['O', 'O'], ['O', 'O']]
+ Back Face: [['B', 'B'], ['B', 'B']]
+ Upper Face: [['W', 'W'], ['W', 'W']]
+ Down Face: [['Y', 'Y'], ['Y', 'Y']]
+
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
 FRLU1
 Front Face: [['W', 'G'], ['W', 'G']]
  Right Face: [['R', 'R'], ['R', 'R']]
@@ -145,45 +233,43 @@ Front Face: [['W', 'G'], ['W', 'G']]
  Upper Face: [['B', 'W'], ['B', 'W']]
  Down Face: [['G', 'Y'], ['G', 'Y']]
 
-Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
-FRLU1
-Front Face: [['B', 'G'], ['B', 'G']]
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
+FRRU1
+Front Face: [['W', 'W'], ['W', 'W']]
  Right Face: [['R', 'R'], ['R', 'R']]
  Left Face: [['O', 'O'], ['O', 'O']]
- Back Face: [['B', 'G'], ['B', 'G']]
- Upper Face: [['Y', 'W'], ['Y', 'W']]
- Down Face: [['W', 'Y'], ['W', 'Y']]
+ Back Face: [['Y', 'Y'], ['Y', 'Y']]
+ Upper Face: [['B', 'B'], ['B', 'B']]
+ Down Face: [['G', 'G'], ['G', 'G']]
 
-Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
-FRLU1
-Front Face: [['Y', 'G'], ['Y', 'G']]
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
+FRRU3
+Front Face: [['W', 'W'], ['W', 'W']]
  Right Face: [['R', 'R'], ['R', 'R']]
  Left Face: [['O', 'O'], ['O', 'O']]
- Back Face: [['B', 'W'], ['B', 'W']]
- Upper Face: [['G', 'W'], ['G', 'W']]
- Down Face: [['B', 'Y'], ['B', 'Y']]
+ Back Face: [['Y', 'Y'], ['Y', 'Y']]
+ Upper Face: [['B', 'B'], ['B', 'B']]
+ Down Face: [['G', 'G'], ['G', 'G']]
 
-Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
-LFCU1
-Front Face: [['Y', 'Y'], ['G', 'G']]
- Right Face: [['G', 'R'], ['W', 'R']]
- Left Face: [['O', 'B'], ['O', 'Y']]
- Back Face: [['B', 'W'], ['B', 'W']]
- Upper Face: [['G', 'W'], ['O', 'O']]
- Down Face: [['B', 'Y'], ['R', 'R']]
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
+FRLU3
+Front Face: [['G', 'W'], ['G', 'W']]
+ Right Face: [['R', 'R'], ['R', 'R']]
+ Left Face: [['O', 'O'], ['O', 'O']]
+ Back Face: [['Y', 'B'], ['Y', 'B']]
+ Upper Face: [['W', 'B'], ['W', 'B']]
+ Down Face: [['Y', 'G'], ['Y', 'G']]
 
-Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
 FRLU1
-Front Face: [['O', 'Y'], ['G', 'G']]
- Right Face: [['G', 'R'], ['W', 'R']]
- Left Face: [['O', 'O'], ['Y', 'B']]
- Back Face: [['B', 'R'], ['B', 'B']]
- Upper Face: [['W', 'W'], ['W', 'O']]
- Down Face: [['Y', 'Y'], ['G', 'R']]
+Front Face: [['W', 'W'], ['W', 'W']]
+ Right Face: [['R', 'R'], ['R', 'R']]
+ Left Face: [['O', 'O'], ['O', 'O']]
+ Back Face: [['Y', 'Y'], ['Y', 'Y']]
+ Upper Face: [['B', 'B'], ['B', 'B']]
+ Down Face: [['G', 'G'], ['G', 'G']]
 
-Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube) FRLU1 FRRU1
 """
 
 # Thank you Eric Grimson, John Guttag, Ana Bell and MITx and MIT OCW
-# Nice stay in Tweed Centre for Mental Health Kurrajong Unit from November 23rd to December 22nd. Friendly nurses, great roast beef, great roast lamb and potato, great beef rendang, butter chicken, soap washes, 9 hours sleep, 8:30 a.m. wake up, 12 30 p.m. lunch and 5:30 p.m. dinner and sunshine and coffee and tea and fruit and prunes. Dad taught me to make rice pudding and Cremè caramele but not chocolate creme or frùche or Panna cotta, rare delicatessens that allowed me to survive. Wish I could enter a culinary business. Love chicken sandwiches and mayonnaise 
-
