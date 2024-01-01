@@ -5,7 +5,22 @@ def print_state(Rubiks):
 	print("Front Face: {}\n Right Face: {}\n Left Face: {}\n Back Face: {}\n Upper Face: {}\n Down Face: {}\n".format(Rubiks[0], Rubiks[1], Rubiks[3], Rubiks[2], Rubiks[4], Rubiks[5]))
 
 def FRU_1_1(Rubiks: list):
-	pass
+	SaveStateDF = Rubiks[4][0][0], Rubiks[4][1][0]
+	SaveStateLF = Rubiks[3][0][0], Rubiks[3][1][0]
+	SaveStateUF = Rubiks[5][0][0], Rubiks[5][1][0]
+	SaveStateBF = Rubiks[2][0][1], Rubiks[2][1][1]
+	SaveStateFF = Rubiks[0][0][0], Rubiks[0][1][0]
+	Rubiks[0][0][0], Rubiks[0][1][0] = SaveStateDF[1], SaveStateDF[0]
+	Rubiks[2][0][1], Rubiks[2][1][1] = SaveStateUF[1], SaveStateUF[0]
+	Rubiks[5][0][0], Rubiks[5][1][0] = SaveStateFF[0], SaveStateFF[1]
+	Rubiks[4][0][0], Rubiks[4][1][0] = SaveStateBF[0], SaveStateBF[1]
+	SaveStateLF1 = Rubiks[3][0][1], Rubiks[3][1][1]
+	SaveStateLF2 = Rubiks[3][0][0], Rubiks[3][1][0]
+	Rubiks[3][0][0] = SaveStateLF2[1]
+	Rubiks[3][0][1] = SaveStateLF2[0]
+	Rubiks[3][1][0] = SaveStateLF1[1]
+	Rubiks[3][1][1] = SaveStateLF1[0]
+	return Rubiks
 def FRU_1_2(Rubiks: list):
 	pass
 def FRU_1_3(Rubiks: list):
@@ -108,6 +123,8 @@ def CharlesTruscott():
 			HL_2_2(RubiksCube)
 		elif answer == str("LFCU3"):
 			HL_2_3(RubiksCube)
+		elif answer == str("FRLU1"):
+			FRU_1_1(RubiksCube)
 		print_state(RubiksCube)
 CharlesTruscott()
 
@@ -120,73 +137,53 @@ CharlesTruscott()
  Down Face: [['Y', 'Y'], ['Y', 'Y']]
 
 Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
-LFFU1
-Front Face: [['G', 'G'], ['G', 'G']]
- Right Face: [['R', 'W'], ['R', 'W']]
- Left Face: [['Y', 'O'], ['Y', 'O']]
- Back Face: [['B', 'B'], ['B', 'B']]
- Upper Face: [['O', 'O'], ['W', 'W']]
- Down Face: [['R', 'R'], ['Y', 'Y']]
+FRLU1
+Front Face: [['W', 'G'], ['W', 'G']]
+ Right Face: [['R', 'R'], ['R', 'R']]
+ Left Face: [['O', 'O'], ['O', 'O']]
+ Back Face: [['B', 'Y'], ['B', 'Y']]
+ Upper Face: [['B', 'W'], ['B', 'W']]
+ Down Face: [['G', 'Y'], ['G', 'Y']]
+
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
+FRLU1
+Front Face: [['B', 'G'], ['B', 'G']]
+ Right Face: [['R', 'R'], ['R', 'R']]
+ Left Face: [['O', 'O'], ['O', 'O']]
+ Back Face: [['B', 'G'], ['B', 'G']]
+ Upper Face: [['Y', 'W'], ['Y', 'W']]
+ Down Face: [['W', 'Y'], ['W', 'Y']]
+
+Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
+FRLU1
+Front Face: [['Y', 'G'], ['Y', 'G']]
+ Right Face: [['R', 'R'], ['R', 'R']]
+ Left Face: [['O', 'O'], ['O', 'O']]
+ Back Face: [['B', 'W'], ['B', 'W']]
+ Upper Face: [['G', 'W'], ['G', 'W']]
+ Down Face: [['B', 'Y'], ['B', 'Y']]
 
 Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
 LFCU1
-Front Face: [['G', 'G'], ['G', 'G']]
- Right Face: [['W', 'W'], ['W', 'W']]
- Left Face: [['Y', 'Y'], ['Y', 'Y']]
- Back Face: [['B', 'B'], ['B', 'B']]
- Upper Face: [['O', 'O'], ['O', 'O']]
- Down Face: [['R', 'R'], ['R', 'R']]
+Front Face: [['Y', 'Y'], ['G', 'G']]
+ Right Face: [['G', 'R'], ['W', 'R']]
+ Left Face: [['O', 'B'], ['O', 'Y']]
+ Back Face: [['B', 'W'], ['B', 'W']]
+ Upper Face: [['G', 'W'], ['O', 'O']]
+ Down Face: [['B', 'Y'], ['R', 'R']]
 
 Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
-LFFU3
-Front Face: [['G', 'G'], ['G', 'G']]
- Right Face: [['W', 'R'], ['W', 'R']]
- Left Face: [['O', 'Y'], ['O', 'Y']]
- Back Face: [['B', 'B'], ['B', 'B']]
- Upper Face: [['W', 'W'], ['O', 'O']]
- Down Face: [['Y', 'Y'], ['R', 'R']]
+FRLU1
+Front Face: [['O', 'Y'], ['G', 'G']]
+ Right Face: [['G', 'R'], ['W', 'R']]
+ Left Face: [['O', 'O'], ['Y', 'B']]
+ Back Face: [['B', 'R'], ['B', 'B']]
+ Upper Face: [['W', 'W'], ['W', 'O']]
+ Down Face: [['Y', 'Y'], ['G', 'R']]
 
 Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
-LFCU3
-Front Face: [['G', 'G'], ['G', 'G']]
- Right Face: [['R', 'R'], ['R', 'R']]
- Left Face: [['O', 'O'], ['O', 'O']]
- Back Face: [['B', 'B'], ['B', 'B']]
- Upper Face: [['W', 'W'], ['W', 'W']]
- Down Face: [['Y', 'Y'], ['Y', 'Y']]
-
-Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
-LFFU2
-Front Face: [['G', 'G'], ['G', 'G']]
- Right Face: [['R', 'O'], ['R', 'O']]
- Left Face: [['R', 'O'], ['R', 'O']]
- Back Face: [['B', 'B'], ['B', 'B']]
- Upper Face: [['Y', 'Y'], ['W', 'W']]
- Down Face: [['W', 'W'], ['Y', 'Y']]
-
-Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
-LFCU2
-Front Face: [['G', 'G'], ['G', 'G']]
- Right Face: [['O', 'O'], ['O', 'O']]
- Left Face: [['R', 'R'], ['R', 'R']]
- Back Face: [['B', 'B'], ['B', 'B']]
- Upper Face: [['Y', 'Y'], ['Y', 'Y']]
- Down Face: [['W', 'W'], ['W', 'W']]
-
-Enter LFFU or LFCU for left face furthest left face closest upward followed by the amount of rotations, i.e. LFFU1, LFCU3 (to rotate the first supported moves of the cube
-quit
-Front Face: [['G', 'G'], ['G', 'G']]
- Right Face: [['O', 'O'], ['O', 'O']]
- Left Face: [['R', 'R'], ['R', 'R']]
- Back Face: [['B', 'B'], ['B', 'B']]
- Upper Face: [['Y', 'Y'], ['Y', 'Y']]
- Down Face: [['W', 'W'], ['W', 'W']]
-
-
-[Program finished]
 """
 
 # Thank you Eric Grimson, John Guttag, Ana Bell and MITx and MIT OCW
-
 # Nice stay in Tweed Centre for Mental Health Kurrajong Unit from November 23rd to December 22nd. Friendly nurses, great roast beef, great roast lamb and potato, great beef rendang, butter chicken, soap washes, 9 hours sleep, 8:30 a.m. wake up, 12 30 p.m. lunch and 5:30 p.m. dinner and sunshine and coffee and tea and fruit and prunes. Dad taught me to make rice pudding and Cremè caramele but not chocolate creme or frùche or Panna cotta, rare delicatessens that allowed me to survive. Wish I could enter a culinary business. Love chicken sandwiches and mayonnaise 
 
