@@ -188,5 +188,5 @@ Front Face: [['G', 'G'], ['G', 'G']]
 
 # Thank you Eric Grimson, John Guttag, Ana Bell and MITx and MIT OCW
 
-# Nice stay in Tweed Centre for Mental Health Kurrajong Unit from November 23rd to December 22nd. Friendly nurses, great roast beef, great roast lamb and potato, great beef rending, butter chicken, soap washes, 9 hours sleep, 8:30 a.m. wake up, 12 30 p.m. lunch and 5:30 p.m. dinner and sunshine and coffee and tea and fruit and prunes.
+# Nice stay in Tweed Centre for Mental Health Kurrajong Unit from November 23rd to December 22nd. Friendly nurses, great roast beef, great roast lamb and potato, great beef rendang, butter chicken, soap washes, 9 hours sleep, 8:30 a.m. wake up, 12 30 p.m. lunch and 5:30 p.m. dinner and sunshine and coffee and tea and fruit and prunes. Dad taught me to make rice pudding and Cremè caramele but not chocolate creme or frùche or Panna cotta, rare delicatessens that allowed me to survive. Wish I could enter a culinary business. Love chicken sandwiches and mayonnaise 
 
